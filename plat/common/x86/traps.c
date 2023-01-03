@@ -102,6 +102,9 @@ void do_page_fault(struct __regs *regs, unsigned long error_code)
 	else if (rc)
 		return;
 
+	uk_pr_crit("Unhandled page fault, error code=0x%lx, vaddr=0x%lx\n",
+		   error_code, vaddr);
+	uk_pr_info("Regs address %p\n", regs);
 	dump_regs(regs);
 #if !__OMIT_FRAMEPOINTER__
 	stack_walk_for_frame(regs->rbp);
