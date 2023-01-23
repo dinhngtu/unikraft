@@ -86,8 +86,9 @@ void do_unhandled_trap(int trapnr, char *str, struct __regs *regs,
 	uk_pr_info("Regs address %p\n", regs);
 	/* TODO revisit when UK_CRASH will also dump the registers */
 	dump_regs(regs);
+	stack_walk_for_frame(regs->rbp);
 	uk_asmdumpk(KLVL_CRIT, (void *) regs->rip, 8);
-	UK_CRASH("Crashing\n");
+	ukplat_terminate(UKPLAT_CRASH, 0);
 }
 
 void do_page_fault(struct __regs *regs, unsigned long error_code)
@@ -106,12 +107,10 @@ void do_page_fault(struct __regs *regs, unsigned long error_code)
 		   error_code, vaddr);
 	uk_pr_info("Regs address %p\n", regs);
 	dump_regs(regs);
-#if !__OMIT_FRAMEPOINTER__
 	stack_walk_for_frame(regs->rbp);
-#endif /* !__OMIT_FRAMEPOINTER__ */
 	uk_asmdumpk(KLVL_CRIT, (void *) regs->rip, 6);
 	dump_mem(regs->rsp);
 	dump_mem(regs->rbp);
 	dump_mem(regs->rip);
-	UK_CRASH("Crashing\n");
+	ukplat_terminate(UKPLAT_CRASH, 0);
 }

@@ -26,12 +26,16 @@
 #include <uk/plat/common/irq.h>
 #include <uk/print.h>
 #include <uk/plat/bootstrap.h>
+#include <uk/plat/common/trace.h>
 
 static void cpu_halt(void) __noreturn;
 
 /* TODO: implement CPU reset */
-void ukplat_terminate(enum ukplat_gstate request __unused)
+void ukplat_terminate(enum ukplat_gstate request, int walk_stack)
 {
+	if (walk_stack)
+		stack_walk();
+
 	uk_pr_info("Unikraft halted\n");
 
 	/* Try to make system off */

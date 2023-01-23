@@ -38,12 +38,16 @@
 #include <uk/arch/lcpu.h>
 #include <uk/plat/bootstrap.h>
 #include <uk/print.h>
+#include <uk/plat/common/trace.h>
 
 #include <linuxu/console.h>
 
-__noreturn void ukplat_terminate(enum ukplat_gstate request)
+__noreturn void ukplat_terminate(enum ukplat_gstate request, int walk_stack)
 {
 	int ret;
+
+	if (walk_stack)
+		stack_walk();
 
 	_liblinuxuplat_fini_console();
 

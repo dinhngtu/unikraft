@@ -61,7 +61,7 @@ extern "C" {
 				"Assertion failed: %s, file %s, line %u\n", \
 				STRINGIFY(x),				\
 				__FILE__, __LINE__);			\
-			ukplat_terminate(UKPLAT_CRASH);			\
+			ukplat_terminate(UKPLAT_CRASH, 1);		\
 		}							\
 	} while (0)
 

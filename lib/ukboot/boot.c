@@ -379,5 +379,5 @@ void ukplat_entry(int argc, char *argv[])
 	rc = (rc != 0) ? UKPLAT_CRASH : UKPLAT_HALT;
 
 exit:
-	ukplat_terminate(rc); /* does not return */
+	ukplat_terminate(rc, 0); /* does not return */
 }

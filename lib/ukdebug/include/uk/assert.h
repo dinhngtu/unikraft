@@ -54,8 +54,7 @@ extern "C" {
 			uk_pr_crit("Assertion failure at " 		\
 				   __FILE__ ":" STRINGIFY(__LINE__) 	\
 				   ": %s\n", STRINGIFY(x));		\
-			/* TODO: stack trace */				\
-			ukplat_terminate(UKPLAT_CRASH);			\
+			ukplat_terminate(UKPLAT_CRASH, 1);		\
 		}							\
 	} while (0)
 
@@ -73,8 +72,7 @@ extern "C" {
 		if (unlikely(!(x))) {					\
 			uk_pr_crit("Assertion failure: %s\n",		\
 				   STRINGIFY(x));			\
-			/* TODO: stack trace */				\
-			ukplat_terminate(UKPLAT_CRASH);			\
+			ukplat_terminate(UKPLAT_CRASH, 1);		\
 		}							\
 	} while (0)
 
@@ -106,8 +104,7 @@ extern "C" {
 #define UK_CRASH(fmt, ...)						\
 	do {								\
 		uk_pr_crit((fmt), ##__VA_ARGS__);			\
-		/* TODO: stack trace */					\
-		ukplat_terminate(UKPLAT_CRASH);				\
+		ukplat_terminate(UKPLAT_CRASH, 1);			\
 	} while (0)
 
 #ifdef __cplusplus

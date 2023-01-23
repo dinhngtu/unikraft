@@ -76,25 +76,27 @@ enum ukplat_gstate {
  * @param request Specify the type of shutdown
  *                Invalid requests are mapped to UKPLAT_CRASH
  */
-void ukplat_terminate(enum ukplat_gstate request) __noreturn;
+void ukplat_terminate(
+	enum ukplat_gstate request,
+	int walk_stack) __noreturn;
 
 /**
  * Halts this guest
  */
 #define ukplat_halt()				\
-	(ukplat_terminate(UKPLAT_HALT))
+	(ukplat_terminate(UKPLAT_HALT, 0))
 
 /**
  * Restarts this guest
  */
 #define ukplat_restart()			\
-	(ukplat_terminate(UKPLAT_RESTART))
+	(ukplat_terminate(UKPLAT_RESTART, 0))
 
 /**
  * Halts this guest with signalling a crash
  */
 #define ukplat_crash()				\
-	(ukplat_terminate(UKPLAT_CRASH))
+	(ukplat_terminate(UKPLAT_CRASH, 1))
 
 /**
  * Suspends this guest

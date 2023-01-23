@@ -158,8 +158,10 @@ UK_SYSCALL_R_DEFINE(int, tkill,
 		    int __unused, tid,
 		    int __unused, sig)
 {
-	if (sig == SIGABRT)
-		UK_CRASH("SIGABRT: tid %d\n", tid);
+	if (sig == SIGABRT) {
+		uk_pr_crit("SIGABRT: tid %d\n", tid);
+		ukplat_terminate(UKPLAT_CRASH, 1);
+	}
 
 	return 0;
 }
@@ -178,8 +180,10 @@ UK_SYSCALL_R_DEFINE(int, kill,
 	if (unlikely(pid != 0))
 		return -ESRCH;
 
-	if (sig == SIGABRT)
-		UK_CRASH("SIGABRT\n");
+	if (sig == SIGABRT) {
+		uk_pr_crit("SIGABRT\n");
+		ukplat_terminate(UKPLAT_CRASH, 1);
+	}
 
 	return 0;
 }

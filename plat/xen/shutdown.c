@@ -36,6 +36,7 @@
 #include <uk/arch/lcpu.h>
 #include <uk/plat/bootstrap.h>
 #include <errno.h>
+#include <uk/plat/common/trace.h>
 
 #include <xen/xen.h>
 #include <common/console.h>
@@ -48,9 +49,12 @@
 #include <xen-arm/hypercall.h>
 #endif
 
-void ukplat_terminate(enum ukplat_gstate request)
+void ukplat_terminate(enum ukplat_gstate request, int walk_stack)
 {
 	int reason;
+
+	if (walk_stack)
+		stack_walk();
 
 	switch (request) {
 	case UKPLAT_HALT:
