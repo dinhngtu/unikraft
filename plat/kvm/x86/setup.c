@@ -273,7 +273,7 @@ static __sz cmdline_len;
 
 static inline int cmdline_init(struct ukplat_bootinfo *bi)
 {
-	char *cmdl = (bi->cmdline) ? (char *)bi->cmdline : CONFIG_UK_NAME;
+	const char *cmdl = (bi->cmdline) ? (const char *)bi->cmdline : CONFIG_UK_NAME;
 
 	cmdline_len = strlen(cmdl) + 1;
 
