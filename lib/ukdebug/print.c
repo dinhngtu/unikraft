@@ -88,7 +88,7 @@
 #define LVLC_CRIT_MSG	""
 #endif /* !CONFIG_LIBUKDEBUG_ANSI_COLOR */
 
-#define BUFLEN 192
+#define BUFLEN 2048
 /* special level for printk redirection, used internally only */
 #define KLVL_DEBUG (-1)
 
@@ -222,6 +222,7 @@ static void _vprint(struct _vprint_console *cons,
 	}
 
 	len = __uk_vsnprintf(lbuf, BUFLEN, fmt, ap);
+	lbuf[BUFLEN - 1] = 0;
 	lptr = lbuf;
 	while (len > 0) {
 		if (cons->newline) {
