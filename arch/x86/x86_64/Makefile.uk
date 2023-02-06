@@ -1,6 +1,7 @@
 ARCHFLAGS     += -D__X86_64__
-ARCHFLAGS     += -m64 -mno-red-zone -fno-asynchronous-unwind-tables
-ARCHFLAGS-$(call have_gcc)	+= -fno-reorder-blocks
+ARCHFLAGS     += -m64
+UKCOMPFLAGS-y += -mno-red-zone -fno-asynchronous-unwind-tables
+UKCOMPFLAGS-$(call have_gcc) += -fno-reorder-blocks
 ISR_ARCHFLAGS += -D__X86_64__
 ISR_ARCHFLAGS += -m64 -mno-red-zone -fno-asynchronous-unwind-tables
 ISR_ARCHFLAGS-$(call have_gcc)	+= -fno-reorder-blocks
