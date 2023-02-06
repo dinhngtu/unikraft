@@ -327,7 +327,7 @@ int ukplat_page_mapx(struct uk_pagetable *pt, __vaddr_t vaddr,
 		     struct ukplat_page_mapx *mapx);
 
 #define ukplat_page_map(pt, va, pa, pages, attr, flags)			\
-	ukplat_page_mapx(pt, va, pa, pages, attr, flags, __NULL)
+	ukplat_page_mapx(pt, va, pa, pages, attr, flags, (struct ukplat_page_mapx *)__NULL)
 
 /**
  * Removes the mappings from a range of contiguous virtual addresses and frees
