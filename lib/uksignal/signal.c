@@ -41,6 +41,7 @@
 #include <uk/config.h>
 #include <uk/essentials.h>
 #include <uk/syscall.h>
+#include <uk/assert.h>
 #ifndef __NEED_struct_timespec
 #define __NEED_struct_timespec
 #endif
@@ -157,6 +158,9 @@ UK_SYSCALL_R_DEFINE(int, tkill,
 		    int __unused, tid,
 		    int __unused, sig)
 {
+	if (sig == SIGABRT)
+		UK_CRASH("SIGABRT: tid %d\n", tid);
+
 	return 0;
 }
 
@@ -173,6 +177,9 @@ UK_SYSCALL_R_DEFINE(int, kill,
 {
 	if (unlikely(pid != 0))
 		return -ESRCH;
+
+	if (sig == SIGABRT)
+		UK_CRASH("SIGABRT\n");
 
 	return 0;
 }
