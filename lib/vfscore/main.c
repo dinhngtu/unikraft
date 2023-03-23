@@ -458,6 +458,9 @@ UK_TRACEPOINT(trace_vfs_pread_err, "%d", int);
 UK_LLSYSCALL_R_DEFINE(ssize_t, pread64, int, fd,
 		      void *, buf, size_t, count, off_t, offset)
 {
+	if (count == 0)
+		return 0;
+
 	trace_vfs_pread(fd, buf, count, offset);
 	struct iovec iov = {
 			.iov_base	= buf,
@@ -537,6 +540,9 @@ UK_TRACEPOINT(trace_vfs_read_err, "%d", int);
 UK_SYSCALL_R_DEFINE(ssize_t, read, int, fd, void *, buf, size_t, count)
 {
 	ssize_t bytes;
+
+	if (count == 0)
+		return 0;
 
 	UK_ASSERT(buf);
 
@@ -652,6 +658,9 @@ UK_TRACEPOINT(trace_vfs_pwrite_err, "%d", int);
 UK_LLSYSCALL_R_DEFINE(ssize_t, pwrite64, int, fd,
 		      const void *, buf, size_t, count, off_t, offset)
 {
+	if (count == 0)
+		return 0;
+
 	trace_vfs_pwrite(fd, buf, count, offset);
 	struct iovec iov = {
 			.iov_base	= (void *)buf,
@@ -732,6 +741,9 @@ UK_TRACEPOINT(trace_vfs_write_err, "%d", int);
 UK_SYSCALL_R_DEFINE(ssize_t, write, int, fd, const void *, buf, size_t, count)
 {
 	ssize_t bytes;
+
+	if (count == 0)
+		return 0;
 
 	UK_ASSERT(buf);
 
