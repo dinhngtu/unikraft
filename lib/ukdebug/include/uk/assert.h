@@ -47,6 +47,27 @@ extern "C" {
 #endif
 
 #if CONFIG_LIBUKDEBUG_ENABLE_ASSERT
+#if CONFIG_LIBUKDEBUG_ASSERT_FILELINE
+#define UK_ASSERT(x)							\
+	do {								\
+		if (unlikely(!(x))) {					\
+			uk_pr_crit("Assertion failure at " 		\
+				   __FILE__ ":" STRINGIFY(__LINE__) 	\
+				   ": %s\n", STRINGIFY(x));		\
+			/* TODO: stack trace */				\
+			ukplat_terminate(UKPLAT_CRASH);			\
+		}							\
+	} while (0)
+
+#define UK_WARNIF(x)							\
+	do {								\
+		if (unlikely(x)) {					\
+			uk_pr_warn("Condition warning at "		\
+				   __FILE__ ":" STRINGIFY(__LINE__) 	\
+				   ": %s\n", STRINGIFY(x));		\
+		}							\
+	} while (0)
+#else
 #define UK_ASSERT(x)							\
 	do {								\
 		if (unlikely(!(x))) {					\
@@ -64,6 +85,7 @@ extern "C" {
 				   STRINGIFY(x));			\
 		}							\
 	} while (0)
+#endif
 
 #else
 #define UK_WARNIF(x)							\

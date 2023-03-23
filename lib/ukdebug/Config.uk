@@ -104,6 +104,11 @@ config LIBUKDEBUG_ENABLE_ASSERT
 	help
 	  Build code with assertions.
 
+config LIBUKDEBUG_ASSERT_FILELINE
+	bool "Print line data in assertions"
+	depends on LIBUKDEBUG_ENABLE_ASSERT
+	default n
+
 menuconfig LIBUKDEBUG_TRACEPOINTS
 	bool "Enable tracepoints"
 	default n
