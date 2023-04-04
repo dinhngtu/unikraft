@@ -44,6 +44,7 @@
 #include <uk/syscall.h>
 #include <sys/ioctl.h>
 #include <uk/syscall.h>
+#include <uk/init.h>
 
 /* We use the default size in Linux kernel */
 #define PIPE_MAX_SIZE	(1 << CONFIG_LIBVFSCORE_PIPE_SIZE_ORDER)
@@ -716,3 +717,15 @@ int mkfifo(const char *path __unused, mode_t mode __unused)
 	return -1;
 }
 #endif /* UK_LIBC_SYSCALLS */
+
+static int pipe_mount_init(void)
+{
+	p_mount.m_path = strdup("");
+	if (!p_mount.m_path)
+		return -ENOMEM;
+	p_mount.m_special = strdup("");
+	if (!p_mount.m_special)
+		return -ENOMEM;
+	return 0;
+}
+uk_lib_initcall(pipe_mount_init);

@@ -43,10 +43,12 @@
 #include <uk/mutex.h>
 #include <uk/list.h>
 #include <uk/config.h>
+#include <uk/init.h>
 
 #include <sys/eventfd.h>
 #include <inttypes.h>
 #include <errno.h>
+#include <string.h>
 
 struct eventfd {
 	/** Current value of this eventfd */
@@ -425,3 +427,15 @@ int eventfd(unsigned int initval, int flags)
 	return ret;
 }
 #endif /* UK_LIBC_SYSCALLS */
+
+static int eventfd_mount_init(void)
+{
+	eventfd_mount.m_path = strdup("");
+	if (!eventfd_mount.m_path)
+		return -ENOMEM;
+	eventfd_mount.m_special = strdup("");
+	if (!eventfd_mount.m_special)
+		return -ENOMEM;
+	return 0;
+}
+uk_lib_initcall(eventfd_mount_init);

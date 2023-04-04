@@ -39,10 +39,12 @@
 #include <uk/alloc.h>
 #include <uk/syscall.h>
 #include <uk/config.h>
+#include <uk/init.h>
 
 #include <inttypes.h>
 #include <stdlib.h>
 #include <errno.h>
+#include <string.h>
 
 static uint64_t e_inode;
 
@@ -369,3 +371,15 @@ int epoll_pwait(int epfd, struct epoll_event *events, int maxevents,
 	return ret;
 }
 #endif /* UK_LIBC_SYSCALLS */
+
+static int epoll_mount_init(void)
+{
+	epoll_mount.m_path = strdup("");
+	if (!epoll_mount.m_path)
+		return -ENOMEM;
+	epoll_mount.m_special = strdup("");
+	if (!epoll_mount.m_special)
+		return -ENOMEM;
+	return 0;
+}
+uk_lib_initcall(epoll_mount_init);
