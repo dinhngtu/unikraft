@@ -171,8 +171,8 @@ UK_SYSCALL_R_DEFINE(int, mount, const char*, dev, const char*, dir,
 	mp->m_flags = flags;
 	mp->m_dev = device;
 	mp->m_data = NULL;
-	strlcpy(mp->m_path, dir, sizeof(mp->m_path));
-	strlcpy(mp->m_special, dev, sizeof(mp->m_special));
+	mp->m_path = strndup(dir, PATH_MAX - 1);
+	mp->m_special = strndup(dev, PATH_MAX - 1);
 
 	/*
 	 * Get vnode to be covered in the upper file system.
@@ -302,6 +302,8 @@ found:
 
 	if (mp->m_dev)
 		device_close(mp->m_dev);
+	free(mp->m_special);
+	free(mp->m_path);
 	free(mp);
  out:
 	uk_mutex_unlock(&mount_lock);
