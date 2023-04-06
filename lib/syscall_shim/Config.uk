@@ -10,6 +10,10 @@ if LIBSYSCALL_SHIM
 	bool
 	default n
 
+	config LIBSYSCALL_SHIM_EXT
+	bool "Use external uk_syscall implementation"
+	default n
+
 	config LIBSYSCALL_SHIM_LIBCSTUBS
 	depends on !LIBSYSCALL_SHIM_NOWRAPPER
 	bool "Provide libc-style stubs"
