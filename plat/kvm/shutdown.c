@@ -31,7 +31,7 @@
 static void cpu_halt(void) __noreturn;
 
 /* TODO: implement CPU reset */
-void ukplat_terminate(enum ukplat_gstate request, int walk_stack)
+void ukplat_terminate(__maybe_unused enum ukplat_gstate request, int walk_stack)
 {
 	if (walk_stack)
 		stack_walk();
