@@ -30,9 +30,10 @@
  * SUCH DAMAGE.
  */
 
+#define _BSD_SOURCE
+
 #include <errno.h>
 
-#define _BSD_SOURCE
 #include <vfscore/vnode.h>
 #include <vfscore/mount.h>
 #include <vfscore/dentry.h>
