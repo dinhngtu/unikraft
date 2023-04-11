@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libfdt,$(CONFIG_LIBFDT)))
+$(eval $(call addlib_s,libfdt,$(CONFIG_LIBFDT),y))
 
 CINCLUDES-$(CONFIG_LIBFDT)	+= -I$(LIBFDT_BASE)/include
 CXXINCLUDES-$(CONFIG_LIBFDT)	+= -I$(LIBFDT_BASE)/include

@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libnolibc,$(CONFIG_LIBNOLIBC)))
+$(eval $(call addlib_s,libnolibc,$(CONFIG_LIBNOLIBC),y))
 
 LIBNOLIBC_NO_BUILTINS		+= -fno-builtin-printf
 LIBNOLIBC_NO_BUILTINS		+= -fno-builtin-fprintf

@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libuknofault,$(CONFIG_LIBUKNOFAULT)))
+$(eval $(call addlib_s,libuknofault,$(CONFIG_LIBUKNOFAULT),y))
 
 CINCLUDES-$(CONFIG_LIBUKNOFAULT)   += -I$(LIBUKNOFAULT_BASE)/include
 CXXINCLUDES-$(CONFIG_LIBUKNOFAULT) += -I$(LIBUKNOFAULT_BASE)/include

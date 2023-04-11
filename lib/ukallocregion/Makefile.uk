@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libukallocregion,$(CONFIG_LIBUKALLOCREGION)))
+$(eval $(call addlib_s,libukallocregion,$(CONFIG_LIBUKALLOCREGION),y))
 
 CINCLUDES-$(CONFIG_LIBUKALLOCREGION)	+= -I$(LIBUKALLOCREGION_BASE)/include
 CXXINCLUDES-$(CONFIG_LIBUKALLOCREGION)	+= -I$(LIBUKALLOCREGION_BASE)/include

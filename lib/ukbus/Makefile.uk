@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libukbus,$(CONFIG_LIBUKBUS)))
+$(eval $(call addlib_s,libukbus,$(CONFIG_LIBUKBUS),y))
 
 CINCLUDES-$(CONFIG_LIBUKBUS)		+= -I$(LIBUKBUS_BASE)/include
 CXXINCLUDES-$(CONFIG_LIBUKBUS)		+= -I$(LIBUKBUS_BASE)/include

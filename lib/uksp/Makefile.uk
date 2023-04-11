@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libuksp,$(CONFIG_LIBUKSP)))
+$(eval $(call addlib_s,libuksp,$(CONFIG_LIBUKSP),y))
 
 CINCLUDES-y += -I$(LIBUKSP_BASE)/include
 

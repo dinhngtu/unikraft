@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libposix_process,$(CONFIG_LIBPOSIX_PROCESS)))
+$(eval $(call addlib_s,libposix_process,$(CONFIG_LIBPOSIX_PROCESS),y))
 
 LIBPOSIX_PROCESS_COMMON_INCLUDES-y     += -I$(LIBPOSIX_PROCESS_BASE)/include
 LIBPOSIX_PROCESS_COMMON_INCLUDES-y     += -I$(LIBPOSIX_PROCESS_BASE)/musl-imported/include

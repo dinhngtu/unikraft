@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libukstore,$(CONFIG_LIBUKSTORE)))
+$(eval $(call addlib_s,libukstore,$(CONFIG_LIBUKSTORE),y))
 
 $(call mk_sub_libbuild_dir,libukstore,include/uk/bits)
 

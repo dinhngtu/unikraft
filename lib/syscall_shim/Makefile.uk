@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libsyscall_shim,$(CONFIG_LIBSYSCALL_SHIM)))
+$(eval $(call addlib_s,libsyscall_shim,$(CONFIG_LIBSYSCALL_SHIM),y))
 
 LIBSYSCALL_SHIM_CFLAGS-$(CONFIG_LIBSYSCALL_SHIM_DEBUG) += -DUK_DEBUG
 

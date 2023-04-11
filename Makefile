@@ -338,6 +338,10 @@ EACHOLIB_ALIBS :=
 EACHOLIB_ALIBS-y :=
 EACHOLIB_LOCALS :=
 EACHOLIB_LOCALS-y :=
+UKCOMPFLAGS-y :=
+UKCOMPFLAGS-n :=
+APPCOMPFLAGS-y :=
+APPCOMPFLAGS-n :=
 
 # Pull in the user's configuration file
 ifeq ($(filter $(noconfig_targets),$(MAKECMDGOALS)),)

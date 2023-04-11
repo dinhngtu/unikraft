@@ -6,16 +6,16 @@ $(eval $(call addplat_s,kvm,$(CONFIG_PLAT_KVM)))
 ##
 ## KVM platform library registration
 ##
-$(eval $(call addplatlib,kvm,libkvmplat))
-$(eval $(call addplatlib_s,kvm,libkvmpci,$(CONFIG_KVM_PCI)))
-$(eval $(call addplatlib_s,kvm,libkvmpf,$(CONFIG_KVM_PF)))
-$(eval $(call addplatlib_s,kvm,libkvmvirtio,$(CONFIG_VIRTIO_BUS)))
-$(eval $(call addplatlib_s,kvm,libkvmvirtionet,$(CONFIG_VIRTIO_NET)))
-$(eval $(call addplatlib_s,kvm,libkvmvirtioblk,$(CONFIG_VIRTIO_BLK)))
-$(eval $(call addplatlib_s,kvm,libkvmvirtio9p,$(CONFIG_VIRTIO_9P)))
-$(eval $(call addplatlib_s,kvm,libkvmofw,$(CONFIG_LIBOFW)))
-$(eval $(call addplatlib_s,kvm,libkvmgic,$(CONFIG_LIBGIC)))
-$(eval $(call addplatlib_s,kvm,libkvmpl031,$(CONFIG_RTC_PL031)))
+$(eval $(call addplatlib,kvm,libkvmplat,y))
+$(eval $(call addplatlib_s,kvm,libkvmpci,$(CONFIG_KVM_PCI),y))
+$(eval $(call addplatlib_s,kvm,libkvmpf,$(CONFIG_KVM_PF),y))
+$(eval $(call addplatlib_s,kvm,libkvmvirtio,$(CONFIG_VIRTIO_BUS),y))
+$(eval $(call addplatlib_s,kvm,libkvmvirtionet,$(CONFIG_VIRTIO_NET),y))
+$(eval $(call addplatlib_s,kvm,libkvmvirtioblk,$(CONFIG_VIRTIO_BLK),y))
+$(eval $(call addplatlib_s,kvm,libkvmvirtio9p,$(CONFIG_VIRTIO_9P),y))
+$(eval $(call addplatlib_s,kvm,libkvmofw,$(CONFIG_LIBOFW),y))
+$(eval $(call addplatlib_s,kvm,libkvmgic,$(CONFIG_LIBGIC),y))
+$(eval $(call addplatlib_s,kvm,libkvmpl031,$(CONFIG_RTC_PL031),y))
 
 ##
 ## Platform library definitions

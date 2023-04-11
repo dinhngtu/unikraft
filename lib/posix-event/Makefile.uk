@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libposix_event,$(CONFIG_LIBPOSIX_EVENT)))
+$(eval $(call addlib_s,libposix_event,$(CONFIG_LIBPOSIX_EVENT),y))
 
 LIBPOSIX_EVENT_SRCS-$(CONFIG_LIBPOSIX_EVENT) += $(LIBPOSIX_EVENT_BASE)/poll.c
 LIBPOSIX_EVENT_SRCS-$(CONFIG_LIBPOSIX_EVENT) += $(LIBPOSIX_EVENT_BASE)/select.c

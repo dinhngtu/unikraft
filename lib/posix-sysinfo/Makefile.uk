@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libposix_sysinfo,$(CONFIG_LIBPOSIX_SYSINFO)))
+$(eval $(call addlib_s,libposix_sysinfo,$(CONFIG_LIBPOSIX_SYSINFO),y))
 
 CINCLUDES-$(CONFIG_LIBPOSIX_SYSINFO)   += -I$(LIBPOSIX_SYSINFO_BASE)/include
 CXXINCLUDES-$(CONFIG_LIBPOSIX_SYSINFO) += -I$(LIBPOSIX_SYSINFO_BASE)/include

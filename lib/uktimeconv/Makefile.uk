@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libuktimeconv,$(CONFIG_LIBUKTIMECONV)))
+$(eval $(call addlib_s,libuktimeconv,$(CONFIG_LIBUKTIMECONV),y))
 
 CINCLUDES-$(CONFIG_LIBUKTIMECONV)	+= -I$(LIBUKTIMECONV_BASE)/include
 CXXINCLUDES-$(CONFIG_LIBUKTIMECONV)	+= -I$(LIBUKTIMECONV_BASE)/include

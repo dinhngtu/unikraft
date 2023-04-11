@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libukallocbbuddy,$(CONFIG_LIBUKALLOCBBUDDY)))
+$(eval $(call addlib_s,libukallocbbuddy,$(CONFIG_LIBUKALLOCBBUDDY),y))
 
 CINCLUDES-$(CONFIG_LIBUKALLOCBBUDDY)	+= -I$(LIBUKALLOCBBUDDY_BASE)/include
 CXXINCLUDES-$(CONFIG_LIBUKALLOCBBUDDY)	+= -I$(LIBUKALLOCBBUDDY_BASE)/include

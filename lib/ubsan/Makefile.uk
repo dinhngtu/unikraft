@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libubsan,$(CONFIG_LIBUBSAN)))
+$(eval $(call addlib_s,libubsan,$(CONFIG_LIBUBSAN),y))
 
 ifeq ($(CONFIG_LIBUBSAN_GLOBAL_CUSTOM),y)
 SANITIZE_LIST-y :=

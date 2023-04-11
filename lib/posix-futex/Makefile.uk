@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libposix_futex,$(CONFIG_LIBPOSIX_FUTEX)))
+$(eval $(call addlib_s,libposix_futex,$(CONFIG_LIBPOSIX_FUTEX),y))
 
 CINCLUDES-$(CONFIG_LIBPOSIX_FUTEX)   += -I$(LIBPOSIX_FUTEX_BASE)/include
 CXXINCLUDES-$(CONFIG_LIBPOSIX_FUTEX) += -I$(LIBPOSIX_FUTEX_BASE)/include

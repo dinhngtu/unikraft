@@ -201,12 +201,18 @@ $(eval $(call uc,$(1))_BASE    := $(_IMPORT_BASE))
 $(eval $(call uc,$(1))_BUILD   := $(BUILD_DIR)/$(1))
 $(eval $(call uc,$(1))_EXPORTS += $(wildcard $(_IMPORT_BASE)/exportsyms.uk))
 $(eval $(call uc,$(1))_LOCALS  += $(wildcard $(_IMPORT_BASE)/localsyms.uk))
+$(if $(filter y,$(2)), \
+	$(eval $(call uc,$(1))_BUILDINGUK = y), \
+	$(eval $(call uc,$(1))_BUILDINGUK = n))
+$(if $(filter y,$(2)), \
+	$(eval $(call uc,$(1))_BUILDINGAPP = n), \
+	$(eval $(call uc,$(1))_BUILDINGAPP = y))
 endef
 
 # addlib_s $libname,$switch
 define addlib_s =
 ifeq ($(2),y)
-$(call addlib,$(1))
+$(call addlib,$(1),$(3))
 endif
 endef
 
@@ -219,11 +225,17 @@ $(eval $(call uc,$(2))_BASE    := $(_IMPORT_BASE))
 $(eval $(call uc,$(2))_BUILD   := $(BUILD_DIR)/$(2))
 $(eval $(call uc,$(2))_EXPORTS += $(wildcard $(_IMPORT_BASE)/exportsyms.uk))
 $(eval $(call uc,$(2))_LOCALS  += $(wildcard $(_IMPORT_BASE)/localsyms.uk))
+$(if $(filter y,$(3)), \
+	$(eval $(call uc,$(2))_BUILDINGUK = y), \
+	$(eval $(call uc,$(2))_BUILDINGUK = n))
+$(if $(filter y,$(3)), \
+	$(eval $(call uc,$(2))_BUILDINGAPP = n), \
+	$(eval $(call uc,$(2))_BUILDINGAPP = y))
 endef
 
 # addplatlib_s $platname,$libname,$switch
 define addplatlib_s =
-$(if $(filter y,$(3)),$(call addplatlib,$(1),$(2)),)
+$(if $(filter y,$(3)),$(call addplatlib,$(1),$(2),$(4)),)
 endef
 
 # creates a sub build directory for a library
@@ -505,6 +517,8 @@ $(4): $(2) | preprocess
 		       $$($(call vprefix_src,$(1),$(2),$(3),INCLUDES)) $$($(call vprefix_src,$(1),$(2),$(3),INCLUDES-y)) \
 		       $$($(call vprefix_glb,$(3),ARCHFLAGS)) $$($(call vprefix_glb,$(3),ARCHFLAGS-y)) \
 		       $$(ASFLAGS) $$(ASFLAGS-y) $$(ASFLAGS_EXTRA) \
+		       $$(UKCOMPFLAGS-$$($(call vprefix_lib,$(1),BUILDINGUK))) \
+		       $$(APPCOMPFLAGS-$$($(call vprefix_lib,$(1),BUILDINGAPP))) \
 		       $$($(call vprefix_lib,$(1),ASFLAGS)) $$($(call vprefix_lib,$(1),ASFLAGS-y)) \
 		       $$($(call vprefix_src,$(1),$(2),$(3),FLAGS)) $$($(call vprefix_src,$(1),$(2),$(3),FLAGS-y)) \
 		       $(5) \
@@ -532,6 +546,8 @@ $(4): $(2) | preprocess
 		       $$($(call vprefix_src,$(1),$(2),$(3),INCLUDES)) $$($(call vprefix_src,$(1),$(2),$(3),INCLUDES-y)) \
 		       $$($(call vprefix_glb,$(3),ARCHFLAGS)) $$($(call vprefix_glb,$(3),ARCHFLAGS-y)) \
 		       $$(ASFLAGS) $$(ASFLAGS-y) $$(ASFLAGS_EXTRA) \
+		       $$(UKCOMPFLAGS-$$($(call vprefix_lib,$(1),BUILDINGUK))) \
+		       $$(APPCOMPFLAGS-$$($(call vprefix_lib,$(1),BUILDINGAPP))) \
 		       $$($(call vprefix_lib,$(1),ASFLAGS)) $$($(call vprefix_lib,$(1),ASFLAGS-y)) \
 		       $$($(call vprefix_src,$(1),$(2),$(3),FLAGS)) $$($(call vprefix_src,$(1),$(2),$(3),FLAGS-y)) \
 		       $(5) \
@@ -557,6 +573,8 @@ $(4): $(2) | preprocess
 		       $$(CINCLUDES) $$(CINCLUDES-y) \
 		       $$($(call vprefix_glb,$(3),ARCHFLAGS)) $$($(call vprefix_glb,$(3),ARCHFLAGS-y)) \
 		       $$(CFLAGS) $$(CFLAGS-y) $$(CFLAGS_EXTRA) \
+		       $$(UKCOMPFLAGS-$$($(call vprefix_lib,$(1),BUILDINGUK))) \
+		       $$(APPCOMPFLAGS-$$($(call vprefix_lib,$(1),BUILDINGAPP))) \
 		       $$($(call vprefix_lib,$(1),CFLAGS)) $$($(call vprefix_lib,$(1),CFLAGS-y)) \
 		       $$($(call vprefix_src,$(1),$(2),$(3),FLAGS)) $$($(call vprefix_src,$(1),$(2),$(3),FLAGS-y)) \
 		       $(5) \
@@ -582,6 +600,8 @@ $(4): $(2) | preprocess
 		       $$($(call vprefix_src,$(1),$(2),$(3),INCLUDES)) $$($(call vprefix_src,$(1),$(2),$(3),INCLUDES-y)) \
 		       $$($(call vprefix_glb,$(3),ARCHFLAGS)) $$($(call vprefix_glb,$(3),ARCHFLAGS-y)) \
 		       $$(CXXFLAGS) $$(CXXFLAGS-y) $$(CXXFLAGS_EXTRA) \
+		       $$(UKCOMPFLAGS-$$($(call vprefix_lib,$(1),BUILDINGUK))) \
+		       $$(APPCOMPFLAGS-$$($(call vprefix_lib,$(1),BUILDINGAPP))) \
 		       $$($(call vprefix_lib,$(1),CXXFLAGS)) $$($(call vprefix_lib,$(1),CXXFLAGS-y)) \
 		       $$($(call vprefix_src,$(1),$(2),$(3),FLAGS)) $$($(call vprefix_src,$(1),$(2),$(3),FLAGS-y)) \
 		       $(5) \
@@ -640,6 +660,8 @@ $(4): $(2) | preprocess
 		       $$($(call vprefix_src,$(1),$(2),$(3),INCLUDES)) $$($(call vprefix_src,$(1),$(2),$(3),INCLUDES-y)) \
 		       $$(ARCHFLAGS) $$(ARCHFLAGS-y) \
 		       $$(ASFLAGS) $$(ASFLAGS-y) $$(ASFLAGS_EXTRA) \
+		       $$(UKCOMPFLAGS-$(call vprefix_lib,$(1),BUILDINGUK)) \
+		       $$(APPCOMPFLAGS-$(call vprefix_lib,$(1),BUILDINGAPP)) \
 		       $$($(call vprefix_lib,$(1),ASFLAGS)) $$($(call vprefix_lib,$(1),ASFLAGS-y)) \
 		       $$($(call vprefix_src,$(1),$(2),$(3),FLAGS)) $$($(call vprefix_src,$(1),$(2),$(3),FLAGS-y)) \
 		       $(5) \

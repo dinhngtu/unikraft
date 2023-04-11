@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libukblkdev,$(CONFIG_LIBUKBLKDEV)))
+$(eval $(call addlib_s,libukblkdev,$(CONFIG_LIBUKBLKDEV),y))
 
 CINCLUDES-$(CONFIG_LIBUKBLKDEV)		+= -I$(LIBUKBLKDEV_BASE)/include
 CXXINCLUDES-$(CONFIG_LIBUKBLKDEV)	+= -I$(LIBUKBLKDEV_BASE)/include

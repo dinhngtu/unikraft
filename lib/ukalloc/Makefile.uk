@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libukalloc,$(CONFIG_LIBUKALLOC)))
+$(eval $(call addlib_s,libukalloc,$(CONFIG_LIBUKALLOC),y))
 
 CINCLUDES-$(CONFIG_LIBUKALLOC)		+= -I$(LIBUKALLOC_BASE)/include
 CXXINCLUDES-$(CONFIG_LIBUKALLOC)	+= -I$(LIBUKALLOC_BASE)/include

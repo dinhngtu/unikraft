@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libuksched,$(CONFIG_LIBUKSCHED)))
+$(eval $(call addlib_s,libuksched,$(CONFIG_LIBUKSCHED),y))
 
 # NOTE: Additional flags might be set to
 #       `LIBUKSCHED_THREAD_FLAGS-y`, `CFLAGS-y`, and `CXXFLAGS-y`

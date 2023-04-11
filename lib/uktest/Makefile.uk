@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libuktest,$(CONFIG_LIBUKTEST)))
+$(eval $(call addlib_s,libuktest,$(CONFIG_LIBUKTEST),y))
 
 CINCLUDES-$(CONFIG_LIBUKTEST)   += -I$(LIBUKTEST_BASE)/include
 CXXINCLUDES-$(CONFIG_LIBUKTEST) += -I$(LIBUKTEST_BASE)/include

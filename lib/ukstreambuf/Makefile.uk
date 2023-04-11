@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libukstreambuf,$(CONFIG_LIBUKSTREAMBUF)))
+$(eval $(call addlib_s,libukstreambuf,$(CONFIG_LIBUKSTREAMBUF),y))
 
 CINCLUDES-$(CONFIG_LIBUKSTREAMBUF)	+= -I$(LIBUKSTREAMBUF_BASE)/include
 CXXINCLUDES-$(CONFIG_LIBUKSTREAMBUF)	+= -I$(LIBUKSTREAMBUF_BASE)/include

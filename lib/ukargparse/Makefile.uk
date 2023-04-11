@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libukargparse,$(CONFIG_LIBUKARGPARSE)))
+$(eval $(call addlib_s,libukargparse,$(CONFIG_LIBUKARGPARSE),y))
 
 CINCLUDES-$(CONFIG_LIBUKARGPARSE)	+= -I$(LIBUKARGPARSE_BASE)/include
 CXXINCLUDES-$(CONFIG_LIBUKARGPARSE)	+= -I$(LIBUKARGPARSE_BASE)/include

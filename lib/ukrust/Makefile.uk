@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libukrust,$(CONFIG_LIBUKRUST)))
+$(eval $(call addlib_s,libukrust,$(CONFIG_LIBUKRUST),y))
 
 CINCLUDES-$(CONFIG_LIBUKRUST) += -I$(LIBUKRUST_BASE)/ukrust_sys
 

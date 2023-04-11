@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libukswrand,$(CONFIG_LIBUKSWRAND)))
+$(eval $(call addlib_s,libukswrand,$(CONFIG_LIBUKSWRAND),y))
 
 CINCLUDES-$(CONFIG_LIBUKSWRAND)	+= -I$(LIBUKSWRAND_BASE)/include
 CXXINCLUDES-$(CONFIG_LIBUKSWRAND) += -I$(LIBUKSWRAND_BASE)/include

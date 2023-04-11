@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libukcpio,$(CONFIG_LIBUKCPIO)))
+$(eval $(call addlib_s,libukcpio,$(CONFIG_LIBUKCPIO),y))
 
 CINCLUDES-$(CONFIG_LIBUKCPIO) += -I$(LIBUKCPIO_BASE)/include
 CXXINCLUDES-$(CONFIG_LIBUKCPIO) += -I$(LIBUKCPIO_BASE)/include

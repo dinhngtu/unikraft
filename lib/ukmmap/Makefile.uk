@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libukmmap,$(CONFIG_LIBUKMMAP)))
+$(eval $(call addlib_s,libukmmap,$(CONFIG_LIBUKMMAP),y))
 
 LIBUKMMAP_SRCS-y += $(LIBUKMMAP_BASE)/mmap.c
 

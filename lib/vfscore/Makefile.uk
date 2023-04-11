@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libvfscore,$(CONFIG_LIBVFSCORE)))
+$(eval $(call addlib_s,libvfscore,$(CONFIG_LIBVFSCORE),y))
 
 # Register to uklibparam, sets "vfs" as parameter prefix (vfs.*)
 $(eval $(call addlib_paramprefix,libvfscore,vfs))

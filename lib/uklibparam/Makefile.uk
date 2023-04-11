@@ -1,4 +1,4 @@
-$(eval $(call addlib_s,libuklibparam,$(CONFIG_LIBUKLIBPARAM)))
+$(eval $(call addlib_s,libuklibparam,$(CONFIG_LIBUKLIBPARAM),y))
 
 ASINCLUDES-y	+= -I$(LIBUKLIBPARAM_BASE)/include
 CINCLUDES-y	+= -I$(LIBUKLIBPARAM_BASE)/include
