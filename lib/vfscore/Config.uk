@@ -9,6 +9,10 @@ config LIBVFSCORE
 if LIBVFSCORE
 menu "vfscore: Configuration"
 
+config LIBVFSCORE_FDTABLE_MAX_FILES
+	int "File descriptor table size"
+	default 1024
+
 config LIBVFSCORE_PIPE_SIZE_ORDER
 	int "Pipe size order"
 	default 16
