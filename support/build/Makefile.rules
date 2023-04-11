@@ -576,6 +576,7 @@ define buildrule_cxx =
 $(4): $(2) | preprocess
 	$(call build_cmd_fixdep,CXX,$(1),$(4),\
 		$(CXX) $$(COMPFLAGS) $$(COMPFLAGS-y) \
+		       $$($(call vprefix_lib,$(1),COMPFLAGS)) $$($(call vprefix_lib,$(1),COMPFLAGS-y)) \
 		       $$(CXXINCLUDES) $$(CXXINCLUDES-y) \
 		       $$($(call vprefix_lib,$(1),CXXINCLUDES)) $$($(call vprefix_lib,$(1),CXXINCLUDES-y)) \
 		       $$($(call vprefix_src,$(1),$(2),$(3),INCLUDES)) $$($(call vprefix_src,$(1),$(2),$(3),INCLUDES-y)) \
