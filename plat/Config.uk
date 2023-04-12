@@ -1,4 +1,9 @@
 menu "Platform Interface Options"
+config UKPLAT_BOOTINFO_NREGIONS
+	int "Maximum number of memory regions in .uk_bootinfo"
+	range 1 256
+	default 32
+
 config UKPLAT_MEMRNAME
 	bool "Memory region names"
 	default n

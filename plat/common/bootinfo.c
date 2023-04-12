@@ -11,7 +11,7 @@
  * Space reservation for boot information. Will be populated by build script.
  */
 __section(".uk_bootinfo") __align(8) __used
-static char bi_bootinfo_sec[UKPLAT_BOOTINFO_SIZE(32)];
+static char bi_bootinfo_sec[UKPLAT_BOOTINFO_SIZE(CONFIG_UKPLAT_BOOTINFO_NREGIONS)];
 
 /**
  * Pointer to boot information. Can be changed at runtime if the boot
