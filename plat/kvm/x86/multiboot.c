@@ -18,7 +18,7 @@
 #include <errno.h>
 #include <string.h>
 
-#define multiboot_crash(msg, rc)	ukplat_crash()
+#define multiboot_crash(msg, rc)	UK_CRASH("Multiboot failed: " msg " (rc %d)", rc)
 
 void _ukplat_entry(struct lcpu *lcpu, struct ukplat_bootinfo *bi);
 
